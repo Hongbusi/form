@@ -5,6 +5,7 @@ import Pages from 'vite-plugin-pages'
 import Layouts from 'vite-plugin-vue-layouts'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import Unocss from 'unocss/vite'
 
 export default defineConfig({
@@ -41,7 +42,8 @@ export default defineConfig({
     Components({
       extensions: ['vue'],
       include: [/\.vue$/, /\.vue\?vue/],
-      dts: 'src/components.d.ts'
+      dts: 'src/components.d.ts',
+      resolvers: [ElementPlusResolver()]
     }),
 
     Unocss()
