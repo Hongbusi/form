@@ -40,19 +40,18 @@ watch(
       <el-row>
         <template v-for="item in formItems" :key="item.label">
           <el-col v-bind="colLayout">
-            <el-form-item v-if="!item.isHidden" :label="item.label" :rules="item.rules" :style="itemStyle">
-              <template v-if="item.type === 'input' || item.type === 'password'">
+            <el-form-item :label="item.label" :rules="item.rules" :style="itemStyle">
+              <template v-if="item.type === 'input'">
                 <el-input
                   v-bind="item.otherOptions"
-                  v-model="formData[`${item.field}`]"
+                  v-model="formData[`${item.prop}`]"
                   :placeholder="item.placeholder"
-                  :show-password="item.type === 'password'"
                 />
               </template>
               <template v-else-if="item.type === 'select'">
                 <el-select
                   v-bind="item.otherOptions"
-                  v-model="formData[`${item.field}`]"
+                  v-model="formData[`${item.prop}`]"
                   :placeholder="item.placeholder"
                   style="width: 100%"
                 >
@@ -64,10 +63,10 @@ watch(
                   />
                 </el-select>
               </template>
-              <template v-else-if="item.type === 'datepicker'">
+              <template v-else-if="item.type === 'date-picker'">
                 <el-date-picker
                   v-bind="item.otherOptions"
-                  v-model="formData[`${item.field}`]"
+                  v-model="formData[`${item.prop}`]"
                   style="width: 100%"
                 />
               </template>
