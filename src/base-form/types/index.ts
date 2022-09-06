@@ -1,5 +1,6 @@
-// 'autocomplete' | 'cascader'
-type FormType = 'input' | 'input-number' | 'radio' | 'checkbox' | 'switch' | 'select' | 'time-select' | 'tree-select' | 'time-picker' | 'date-picker'
+// TODO 'autocomplete' | 'cascader'
+
+type FormType = 'input' | 'input-number' | 'radio' | 'checkbox' | 'switch' | 'select' | 'time-select' | 'time-picker' | 'date-picker' | 'tree-select'
 
 export interface FormItem {
   label: string
@@ -13,7 +14,7 @@ export interface FormItem {
   otherOptions?: any
 }
 
-export interface IForm {
+export interface Form {
   labelWidth?: string
   colLayout?: any
   itemLayout?: any

@@ -12,7 +12,7 @@ interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  labelWidth: '100px',
+  labelWidth: '80px',
   itemStyle: () => ({ padding: '10px 40px' }),
   colLayout: () => ({ xl: 6, lg: 8, md: 12, sm: 24, xs: 24 }),
   formItems: () => ([])
@@ -32,51 +32,111 @@ watch(
 </script>
 
 <template>
-  <div class="h-form">
-    <div class="header">
-      <slot name="header" />
-    </div>
-    <el-form :label-width="labelWidth">
-      <el-row>
-        <template v-for="item in formItems" :key="item.label">
-          <el-col v-bind="colLayout">
-            <el-form-item :label="item.label" :rules="item.rules" :style="itemStyle">
-              <template v-if="item.type === 'input'">
-                <el-input
-                  v-bind="item.otherOptions"
-                  v-model="formData[`${item.prop}`]"
-                  :placeholder="item.placeholder"
+  <el-form :label-width="labelWidth">
+    <el-row>
+      <template v-for="item in formItems" :key="item.label">
+        <el-col v-bind="colLayout">
+          <el-form-item :label="item.label" :rules="item.rules" :style="itemStyle">
+            <template v-if="item.type === 'input'">
+              <el-input
+                v-bind="item.otherOptions"
+                v-model="formData[`${item.prop}`]"
+                :placeholder="item.placeholder || `请输入${item.label}`"
+              />
+            </template>
+
+            <template v-else-if="item.type === 'input-number'">
+              <el-input-number
+                v-bind="item.otherOptions"
+                v-model="formData[`${item.prop}`]"
+              />
+            </template>
+
+            <template v-else-if="item.type === 'radio'">
+              <el-radio-group
+                v-bind="item.otherOptions"
+                v-model="formData[`${item.prop}`]"
+              >
+                <el-radio
+                  v-for="option in item.options"
+                  :key="option.value"
+                  :label="option.label"
+                  :value="option.value"
                 />
-              </template>
-              <template v-else-if="item.type === 'select'">
-                <el-select
-                  v-bind="item.otherOptions"
-                  v-model="formData[`${item.prop}`]"
-                  :placeholder="item.placeholder"
-                  style="width: 100%"
-                >
-                  <el-option
-                    v-for="option in item.options"
-                    :key="option.value"
-                    :label="option.label"
-                    :value="option.value"
-                  />
-                </el-select>
-              </template>
-              <template v-else-if="item.type === 'date-picker'">
-                <el-date-picker
-                  v-bind="item.otherOptions"
-                  v-model="formData[`${item.prop}`]"
-                  style="width: 100%"
+              </el-radio-group>
+            </template>
+
+            <template v-else-if="item.type === 'checkbox'">
+              <el-checkbox-group
+                v-bind="item.otherOptions"
+                v-model="formData[`${item.prop}`]"
+              >
+                <el-checkbox
+                  v-for="option in item.options"
+                  :key="option.value"
+                  :label="option.label"
+                  :value="option.value"
                 />
-              </template>
-            </el-form-item>
-          </el-col>
-        </template>
-      </el-row>
-    </el-form>
-    <div class="footer">
-      <slot name="footer" />
-    </div>
-  </div>
+              </el-checkbox-group>
+            </template>
+
+            <template v-else-if="item.type === 'switch'">
+              <el-switch
+                v-bind="item.otherOptions"
+                v-model="formData[`${item.prop}`]"
+              />
+            </template>
+
+            <template v-else-if="item.type === 'select'">
+              <el-select
+                v-bind="item.otherOptions"
+                v-model="formData[`${item.prop}`]"
+                :placeholder="item.placeholder || `请选择${item.label}`"
+              >
+                <el-option
+                  v-for="option in item.options"
+                  :key="option.value"
+                  :label="option.label"
+                  :value="option.value"
+                />
+              </el-select>
+            </template>
+
+            <template v-else-if="item.type === 'time-select'">
+              <el-time-select
+                v-bind="item.otherOptions"
+                v-model="formData[`${item.prop}`]"
+                :placeholder="item.placeholder || `请选择${item.label}`"
+              />
+            </template>
+
+            <template v-else-if="item.type === 'time-picker'">
+              <el-time-picker
+                v-bind="item.otherOptions"
+                v-model="formData[`${item.prop}`]"
+                :placeholder="item.placeholder || `请选择${item.label}`"
+              />
+            </template>
+
+            <template v-else-if="item.type === 'date-picker'">
+              <el-date-picker
+                v-bind="item.otherOptions"
+                v-model="formData[`${item.prop}`]"
+                :placeholder="item.placeholder || `请选择${item.label}`"
+              />
+            </template>
+
+            <template v-else-if="item.type === 'tree-select'">
+              <el-tree-select
+                v-bind="item.otherOptions"
+                v-model="formData[`${item.prop}`]"
+                :placeholder="item.placeholder || `请选择${item.label}`"
+                :data="item.options"
+              />
+            </template>
+          </el-form-item>
+        </el-col>
+      </template>
+    </el-row>
+  </el-form>
 </template>
