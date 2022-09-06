@@ -15,17 +15,17 @@ const formConfig: Form = {
   },
   formItems: [
     {
-      prop: 'name',
+      key: 'name',
       type: 'input',
       label: '用户名'
     },
     {
-      prop: 'age',
+      key: 'age',
       type: 'input-number',
       label: '年龄'
     },
     {
-      prop: 'sex',
+      key: 'sex',
       type: 'radio',
       label: '性别',
       options: [
@@ -34,7 +34,7 @@ const formConfig: Form = {
       ]
     },
     {
-      prop: 'hobby',
+      key: 'hobby',
       type: 'checkbox',
       label: '爱好',
       options: [
@@ -44,12 +44,12 @@ const formConfig: Form = {
       ]
     },
     {
-      prop: 'liveOnCampus',
+      key: 'liveOnCampus',
       type: 'switch',
       label: '是否住校'
     },
     {
-      prop: 'enable',
+      key: 'enable',
       type: 'select',
       label: '用户状态',
       options: [
@@ -58,17 +58,17 @@ const formConfig: Form = {
       ]
     },
     {
-      prop: 'timeSelect',
+      key: 'timeSelect',
       type: 'time-select',
       label: 'TimeSelect'
     },
     {
-      prop: 'timePicker',
+      key: 'timePicker',
       type: 'time-picker',
       label: 'TimePicker'
     },
     {
-      prop: 'createAt',
+      key: 'createAt',
       type: 'date-picker',
       label: '创建时间',
       otherOptions: {
@@ -78,7 +78,7 @@ const formConfig: Form = {
       }
     },
     {
-      prop: 'tree',
+      key: 'tree',
       type: 'tree-select',
       label: 'TreeSelect',
       options: [

@@ -40,7 +40,7 @@ watch(
             <template v-if="item.type === 'input'">
               <el-input
                 v-bind="item.otherOptions"
-                v-model="formData[`${item.prop}`]"
+                v-model="formData[`${item.key}`]"
                 :placeholder="item.placeholder || `请输入${item.label}`"
               />
             </template>
@@ -48,14 +48,14 @@ watch(
             <template v-else-if="item.type === 'input-number'">
               <el-input-number
                 v-bind="item.otherOptions"
-                v-model="formData[`${item.prop}`]"
+                v-model="formData[`${item.key}`]"
               />
             </template>
 
             <template v-else-if="item.type === 'radio'">
               <el-radio-group
                 v-bind="item.otherOptions"
-                v-model="formData[`${item.prop}`]"
+                v-model="formData[`${item.key}`]"
               >
                 <el-radio
                   v-for="option in item.options"
@@ -69,7 +69,7 @@ watch(
             <template v-else-if="item.type === 'checkbox'">
               <el-checkbox-group
                 v-bind="item.otherOptions"
-                v-model="formData[`${item.prop}`]"
+                v-model="formData[`${item.key}`]"
               >
                 <el-checkbox
                   v-for="option in item.options"
@@ -83,14 +83,14 @@ watch(
             <template v-else-if="item.type === 'switch'">
               <el-switch
                 v-bind="item.otherOptions"
-                v-model="formData[`${item.prop}`]"
+                v-model="formData[`${item.key}`]"
               />
             </template>
 
             <template v-else-if="item.type === 'select'">
               <el-select
                 v-bind="item.otherOptions"
-                v-model="formData[`${item.prop}`]"
+                v-model="formData[`${item.key}`]"
                 :placeholder="item.placeholder || `请选择${item.label}`"
               >
                 <el-option
@@ -105,7 +105,7 @@ watch(
             <template v-else-if="item.type === 'time-select'">
               <el-time-select
                 v-bind="item.otherOptions"
-                v-model="formData[`${item.prop}`]"
+                v-model="formData[`${item.key}`]"
                 :placeholder="item.placeholder || `请选择${item.label}`"
               />
             </template>
@@ -113,7 +113,7 @@ watch(
             <template v-else-if="item.type === 'time-picker'">
               <el-time-picker
                 v-bind="item.otherOptions"
-                v-model="formData[`${item.prop}`]"
+                v-model="formData[`${item.key}`]"
                 :placeholder="item.placeholder || `请选择${item.label}`"
               />
             </template>
@@ -121,7 +121,7 @@ watch(
             <template v-else-if="item.type === 'date-picker'">
               <el-date-picker
                 v-bind="item.otherOptions"
-                v-model="formData[`${item.prop}`]"
+                v-model="formData[`${item.key}`]"
                 :placeholder="item.placeholder || `请选择${item.label}`"
               />
             </template>
@@ -129,7 +129,7 @@ watch(
             <template v-else-if="item.type === 'tree-select'">
               <el-tree-select
                 v-bind="item.otherOptions"
-                v-model="formData[`${item.prop}`]"
+                v-model="formData[`${item.key}`]"
                 :placeholder="item.placeholder || `请选择${item.label}`"
                 :data="item.options"
               />
