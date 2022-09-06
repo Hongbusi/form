@@ -1,13 +1,14 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue'
-import type { IFormItem } from '../types'
+import type { FormItem } from '../types'
+import type { Recordable } from '~/types'
 
 interface Props {
   modelValue: Recordable
   labelWidth?: string
   itemStyle?: Recordable
   colLayout?: Recordable
-  formItems?: IFormItem[]
+  formItems?: FormItem[]
 }
 
 const props = withDefaults(defineProps<Props>(), {
