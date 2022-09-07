@@ -11,10 +11,11 @@ export interface FormItem {
   rules?: FormRules // 表单验证规则
   placeholder?: any // 输入框占位文本
   defaultValue?: any // 默认值
-  // 针对 select
-  options?: any[]
-  // 针对特殊的属性
-  otherOptions?: any
+  options?: any[] // 针对 radio、checkbox、select、tree-select
+  asyncOptions?: () => Promise<any[]> // 列表异步获取配置项的方法
+  otherOptions?: any // 针对组件库提供的其他属性
+  watchKey?: string | string[] // 需要监听的 key
+  watchCallBack?: () => Promise<any[]> // 启动监听的 key 发生改变时的回调函数
 }
 
 export interface Form {
