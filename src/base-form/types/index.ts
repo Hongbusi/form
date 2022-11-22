@@ -7,7 +7,7 @@ export interface FormItem {
   label: string // 标签文本
   key: string // model 的键名
   type: FormType // 组件的类型
-  size: 'small' | 'default' | 'large' // 组件的尺寸
+  size?: 'small' | 'default' | 'large' // 组件的尺寸
   rules?: FormRules // 表单验证规则
   placeholder?: any // 输入框占位文本
   defaultValue?: any // 默认值

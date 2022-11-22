@@ -18,17 +18,35 @@ const props = withDefaults(defineProps<Props>(), {
   formItems: () => ([])
 })
 
-const emit = defineEmits(['update:modelValue'])
+// const emit = defineEmits(['update:modelValue'])
 
-const formData = ref({ ...props.modelValue })
+// const formData = ref({ ...props.modelValue })
 
-watch(
-  formData,
-  (newValue) => {
-    emit('update:modelValue', newValue)
-  },
-  { deep: true }
-)
+// watch(
+//   formData,
+//   (newValue) => {
+//     emit('update:modelValue', newValue)
+//   },
+//   { deep: true }
+// )
+
+const formOptions = ref<FormItem[]>([])
+
+function init() {
+  if (!props.formItems)
+    return
+  for (const item of props.formItems)
+    mixinData(item)
+
+  // TODO rules watch
+}
+
+init()
+
+function mixinData(formItem: FormItem) {
+  formItem.size = formItem.size || 'small'
+  formOptions.value.push(formItem)
+}
 </script>
 
 <template>
